@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const passwordRouter = require('./routes/passwordRouter');
-
+const { errorHandler, notFound } = require('./middlewares/errorHandlerMiddleware');
 const app = express();
 
 // Middleware
@@ -18,5 +18,9 @@ app.use(cookieParser());
 
 // Routes
 app.use('/api/password', passwordRouter);
+
+// Error handling middleware
+app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;
