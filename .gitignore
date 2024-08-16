@@ -134,3 +134,8 @@ dist
 
 backend/.env
 backend/node_modules
+
+#frontenddirectory contents
+
+frontend/.env
+frontend/node_modules
