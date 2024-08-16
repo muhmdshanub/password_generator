@@ -13,7 +13,9 @@ import store from './store.js';
 import StyledErrorBoundary from './components/HOC/ErrorBoundary.jsx'; 
 import LoadingModal from './components/LoadingModal.jsx'; 
 import NotFound from './screens/NotFound.jsx';
-
+import responsiveTheme from './theme';
+import { ThemeProvider } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
 
 const HomeScreen = lazy(() => import('./screens/HomeScreen.jsx'));
 
@@ -37,7 +39,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <StyledErrorBoundary>
     <Provider store={store}>
       <React.StrictMode>
-        <RouterProvider router={router} />
+        <ThemeProvider theme={responsiveTheme}>
+          <CssBaseline />
+          <RouterProvider router={router} />
+        </ThemeProvider> 
       </React.StrictMode>
     </Provider>
   </StyledErrorBoundary>
