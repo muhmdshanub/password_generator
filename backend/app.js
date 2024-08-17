@@ -1,13 +1,21 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
 const passwordRouter = require('./routes/passwordRouter');
 const { errorHandler, notFound } = require('./middlewares/errorHandlerMiddleware');
+
+// Load environment variables
+dotenv.config();
+
+
 const app = express();
+
+
 
 // Middleware
 const corsOptions = {
-    origin:process.env.FRONT_END_URL,
+    origin: process.env.FRONT_END_URL,
     credentials: true, // Allow credentials (cookies) to be sent
 };
 app.use(cors(corsOptions));
