@@ -48,6 +48,15 @@ const PasswordCustomizer = ({
   };
 
   const handleSwitchChange = (key) => (event) => {
+    // Auto-disable startWithLetter if both uppercase and lowercase are disabled
+    if ((key === 'includeUppercase' || key === 'includeLowercase') && !event.target.checked) {
+      
+      if ((!includeUppercase || !includeLowercase) && (key === 'includeLowercase' || key === 'includeUppercase')) {
+        onChange({ startWithLetter: false });
+      }
+    }
+    
+    // Automatically handle setting state for switches
     onChange({ [key]: event.target.checked });
   };
 
@@ -139,6 +148,7 @@ const PasswordCustomizer = ({
                   <Switch
                     checked={eval(key)} // Dynamically get value from props
                     onChange={handleSwitchChange(key)}
+                    disabled={key === 'startWithLetter' && (!includeUppercase && !includeLowercase)} // Disable based on condition
                   />
                 }
                 label={

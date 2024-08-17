@@ -149,7 +149,7 @@ const generatePassword = (options) => {
 
     try{
         if(!includeLowercase && !includeUppercase && !includeNumbers && !includeSymbols){
-            throw new Error("Not enough characters to generate a password.");
+            throw new Error("No Character set is selected.");
         }
     
         
